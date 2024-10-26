@@ -660,6 +660,38 @@
             margin-bottom: 10px;
             font-size: 18px;
         }
+        /* Estilo para o botão de WhatsApp fixo */
+/* Estilo para o botão de WhatsApp fixo */
+.whatsapp-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.whatsapp-fixed img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: rotate 3s ease-in-out infinite; /* Define a animação */
+    animation-delay: 10s; /* Delay de 10 segundos entre as rotações */
+}
+
+/* Animação de rotação */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
     </style>
     <script>
         function toggleMenu() {
@@ -669,6 +701,10 @@
     </script>
 </head>
 <body>
+<!-- Botão de WhatsApp fixo -->
+<a href="https://wa.me/seu-numero-whatsapp" class="whatsapp-fixed" target="_blank">
+    <img src="img/whats.png" alt="WhatsApp">
+</a>
 
     <header>
         <!-- Logo à esquerda -->
@@ -681,10 +717,10 @@
 
         <!-- Navegação centralizada -->
         <nav>
-            <a href="#quem-somos">Quem Somos</a>
-            <a href="#catalogo">Catálogo</a>
-            <a href="#contato">Contato</a>
-            <a href="#servicos">Serviços</a>
+            <a href="quem somos">Quem Somos</a>
+            <a href="catalogo">Catálogo</a>
+            <a href="contato">Contato</a>
+            <a href="servicos">Serviços</a>
         </nav>
 
         <!-- Botão de WhatsApp e número à direita -->
