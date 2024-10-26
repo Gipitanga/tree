@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Landing page para divulgar cursos no Kiwify">
+    <title>Seus Cursos Online</title>
+    <style>
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body */
+body {
+    color: #333;
+    background-color: #f5f7fa;
+    line-height: 1.6;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Banner Inicial */
+.banner {
+    background: url('banner.jpg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+}
+
+.banner-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    width: 90%;
+}
+
+.banner h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.banner .btn-cta {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #00a8e8;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Seção de Benefícios */
+.beneficios {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.beneficio-lista {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.beneficio {
+    flex: 1;
+    max-width: 300px;
+}
+
+.beneficio h3 {
+    color: #00a8e8;
+    margin-bottom: 10px;
+}
+
+/* Cursos */
+.cursos {
+    padding: 50px 0;
+    background-color: #f8fafc;
+    text-align: center;
+}
+
+.curso {
+    display: inline-block;
+    width: 30%;
+    margin: 20px;
+    text-align: left;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+}
+
+.curso img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.curso h3 {
+    color: #0073e6;
+    margin-top: 10px;
+}
+
+/* Banner de Convencimento */
+.banner-convencimento {
+    background: #0073e6;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.banner-convencimento h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+/* Sessão de Bônus */
+.bonus {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.bonus ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.bonus li {
+    font-size: 1.1em;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Testemunhos */
+.testemunhos {
+    padding: 50px 0;
+    background-color: #f8fafc;
+}
+
+.testemunho {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    margin: 10px auto;
+    width: 60%;
+}
+
+.testemunho p {
+    font-style: italic;
+}
+
+/* Chamada Final */
+.cta-final {
+    padding: 50px 0;
+    background: #00a8e8;
+    color: #fff;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+    </style>
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Landing page para divulgar cursos no Kiwify">
+        <title>Seus Cursos Online</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    
+        <!-- Banner Inicial com imagem de fundo e overlay escuro -->
+        <header class="banner">
+            <div class="banner-overlay">
+                <div class="container">
+                    <h1>Desenvolva suas Habilidades com os Melhores Cursos</h1>
+                    <p>Aprofunde-se em conhecimentos essenciais e transforme seu futuro profissional.</p>
+                    <a href="#cursos" class="btn-cta">Comece Agora</a>
+                </div>
+            </div>
+        </header>
+    
+        <!-- Seção de Benefícios -->
+        <section class="beneficios">
+            <div class="container">
+                <h2>Por que escolher nossos cursos?</h2>
+                <div class="beneficio-lista">
+                    <div class="beneficio">
+                        <h3>Aprendizado Prático</h3>
+                        <p>Desenvolva habilidades aplicáveis com exemplos práticos e reais.</p>
+                    </div>
+                    <div class="beneficio">
+                        <h3>Certificado de Conclusão</h3>
+                        <p>Receba um certificado reconhecido e valorizado no mercado.</p>
+                    </div>
+                    <div class="beneficio">
+                        <h3>Acesso Vitalício</h3>
+                        <p>Estude no seu ritmo, com acesso ilimitado ao conteúdo dos cursos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Seção de Cursos -->
+        <section id="cursos" class="cursos">
+            <div class="container">
+                <h2>Nossos Cursos</h2>
+                <div class="curso-lista">
+                    <div class="curso">
+                        <img src="curso1.jpg" alt="Imagem do Curso 1">
+                        <h3>Título do Curso 1</h3>
+                        <p>Descrição breve do curso que destaca o benefício principal.</p>
+                        <a href="https://seu-link-kiwify.com/curso1" target="_blank" class="btn-comprar">Saiba Mais</a>
+                    </div>
+                    <div class="curso">
+                        <img src="curso2.jpg" alt="Imagem do Curso 2">
+                        <h3>Título do Curso 2</h3>
+                        <p>Descrição breve do curso que destaca o benefício principal.</p>
+                        <a href="https://seu-link-kiwify.com/curso2" target="_blank" class="btn-comprar">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Banner de Convencimento -->
+        <section class="banner-convencimento">
+            <div class="container">
+                <h2>Pronto para transformar sua carreira?</h2>
+                <p>Aproveite nossos cursos exclusivos com conteúdos de alta qualidade, criados por profissionais renomados.</p>
+                <a href="https://seu-link-kiwify.com" target="_blank" class="btn-cta">Garanta sua Vaga Agora!</a>
+            </div>
+        </section>
+    
+        <!-- Seção de Bônus -->
+        <section class="bonus">
+            <div class="container">
+                <h2>Benefícios Exclusivos ao se Inscrever</h2>
+                <ul>
+                    <li>Acesso a grupo VIP de networking</li>
+                    <li>Webinars mensais com especialistas</li>
+                    <li>Descontos em cursos futuros</li>
+                    <li>Suporte personalizado</li>
+                </ul>
+            </div>
+        </section>
+    
+        <!-- Testemunhos -->
+        <section class="testemunhos">
+            <div class="container">
+                <h2>Depoimentos de Alunos</h2>
+                <div class="testemunho">
+                    <p>"Este curso mudou minha vida profissional. Aprendi muito!"</p>
+                    <span>- Nome do Aluno</span>
+                </div>
+                <div class="testemunho">
+                    <p>"As aulas são muito práticas e me ajudaram a aplicar o conteúdo de forma rápida."</p>
+                    <span>- Nome do Aluno</span>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Chamada Final -->
+        <section class="cta-final">
+            <div class="container">
+                <h2>Pronto para começar sua jornada?</h2>
+                <a href="https://seu-link-kiwify.com" target="_blank" class="btn-cta">Acesse Nossos Cursos</a>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Seus Cursos Online. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    
+    </body>
+    </html>
+    

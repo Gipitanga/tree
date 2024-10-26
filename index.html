@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header com Botão de WhatsApp e Banner Responsivo</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo do header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            background-color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        /* Logo à esquerda */
+        .logo img {
+            height: 70px;
+        }
+
+        /* Navegação centralizada */
+        nav {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            justify-content: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #007bff;
+        }
+
+        /* Botão de WhatsApp e número à direita */
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .whatsapp-btn img {
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .whatsapp-btn img:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-btn span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Responsividade para menu hamburguer em telas menores */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+            .logo img {
+                height: 50px;
+            }
+            .whatsapp-btn img {
+                height: 35px;
+            }
+            .whatsapp-btn span {
+                font-size: 16px;
+            }
+            nav {
+                display: none; /* Esconder navegação em telas pequenas */
+                flex-direction: column;
+                gap: 15px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #f5f5f5;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            nav a {
+                font-size: 18px;
+                text-align: center;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+        .banner {
+            background-image: url('img/banner.webp'); /* Insira o URL da sua imagem aqui */
+            background-size: cover;
+            background-position: center;
+            height: 600px; /* Altura fixa do banner */
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Estilo da CTA e Headline */
+        .cta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #1c2434;
+            border-radius: 8px;
+            max-width: 250px;
+        }
+
+        .headline {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .botao-cta {
+            padding: 10px 20px;
+            background-color: #1c2434;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        /* Ajustes para telas menores - redução em escala */
+        @media (max-width: 768px) {
+            .banner {
+                height: 300px; /* Reduz a altura para telas menores */
+                padding: 20px;
+            }
+            .cta {
+                max-width: 200px; /* Reduz a largura da CTA */
+                padding: 15px;
+            }
+            .headline {
+                font-size: 1.2em; /* Reduz a fonte da headline */
+            }
+            .botao-cta {
+                padding: 8px 16px; /* Diminui o botão CTA */
+            }
+        } 
+        
+        .quem-somos-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 50px;
+      max-width: 900px;
+      background-color: #f4f4f9;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        /* Alinhamento central da seção Quem Somos */
+.main-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+
+    /* Estilos para a imagem à esquerda */
+    .image-container img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      transition: transform 0.5s ease-in-out;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Estilos para o conteúdo de texto à direita */
+    .content-container {
+      max-width: 500px;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    .content-container h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: left;
+      animation: slideInRight 1s ease;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    /* Destaques com animação */
+    .highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .highlight-item {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      animation: slideInRight 1s ease forwards;
+    }
+
+    .highlight-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .highlight-item p {
+      color: #555;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .quem-somos-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .content-container h2 {
+        font-size: 1.8rem;
+      }
+
+      .image-container img {
+        max-width: 100%;
+      }
+    }
+
+        
+        
+        .como-funciona {
+    padding: 50px;
+    text-align: center;
+}
+
+.como-funciona h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.como-funciona .conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.como-funciona img {
+    width: 45%;
+    border-radius: 10px;
+}
+
+.como-funciona .steps {
+    width: 50%;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.step img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.step h3 {
+    margin-bottom: 10px;
+    color: #7b467b;
+}
+
+/* Media Queries para dispositivos móveis */
+@media (max-width: 768px) {
+    .como-funciona .conteudo {
+        flex-direction: column; /* Muda a direção do flex para coluna em telas menores */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    .como-funciona img {
+        width: 80%; /* Aumenta a largura da imagem em telas menores */
+        margin-bottom: 20px; /* Adiciona espaço abaixo da imagem */
+    }
+
+    .como-funciona .steps {
+        width: 100%; /* Faz a seção steps ocupar toda a largura */
+    }
+
+    .step {
+        flex-direction: row; /* Mantém a direção do flex para a linha */
+        justify-content: center; /* Centraliza os itens dentro de step */
+    }
+
+    .step img {
+        margin: 0 10px 0 0; /* Ajusta a margem da imagem do step */
+    }
+}
+
+.valores-diferenciais {
+    padding: 50px;
+    background-color: #f9f9f9;
+    text-align: center;
+    color: #333;
+}
+
+.valores-intro h2 {
+    font-size: 2.5em;
+    color: #7b467b;
+    margin-bottom: 20px;
+}
+
+.valores-intro p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.valores-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.valor-item {
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: left;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.valor-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.valor-item h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 15px;
+}
+
+.valor-item p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+.valor-item:hover {
+    transform: scale(1.05);
+}
+
+.diferenciais h2 {
+    font-size: 2em;
+    color: #7b467b;
+    margin: 50px 0 20px;
+}
+
+.diferenciais p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.diferenciais ul {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.diferenciais li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.diferenciais li strong {
+    color: #7b467b;
+}
+
+
+.cta-banner {
+    background-image: url('caminho-para-sua-imagem.jpg'); /* Adicione o caminho da imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Efeito de escurecimento */
+    z-index: 1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.cta-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffdc00; /* Cor de destaque para o título */
+    font-weight: bold;
+}
+
+.cta-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    background-color: #ffdc00; /* Cor vibrante para o botão */
+    color: #1c2434;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e0bb00;
+    transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cta-content h2 {
+        font-size: 2em;
+    }
+
+    .cta-content p {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+.catalogo {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.catalogo h2 {
+    font-size: 2.5em;
+    color: #1c2434;
+    margin-bottom: 10px;
+}
+
+.catalogo p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.catalogo-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.catalogo-item {
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.catalogo-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.catalogo-item h3 {
+    font-size: 1.5em;
+    color: #1c2434;
+    margin-bottom: 10px;
+}
+
+.catalogo-item p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.catalogo-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1c2434;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.catalogo-button:hover {
+    background-color: #333;
+}
+
+.catalogo-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .catalogo h2 {
+        font-size: 2em;
+    }
+
+    .catalogo p {
+        font-size: 1em;
+    }
+
+    .catalogo-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+        
+        .footer {
+            background-color: white; /* Fundo branco */
+            color: #8B4F8B; /* Texto em roxo */
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            width: 150px; /* Ajuste o tamanho da logo conforme necessário */
+        }
+
+        .footer-sections {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-col {
+            flex: 1;
+            margin: 10px 20px;
+            min-width: 200px;
+        }
+
+        .footer-col h3 {
+            color: #8B4F8B; /* Títulos em roxo */
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin: 10px 0;
+        }
+
+        .footer-col ul li a {
+            color: #8B4F8B; /* Links em roxo */
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .footer-col ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #8B4F8B; /* Linha roxa */
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector("nav");
+            nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <!-- Logo à esquerda -->
+        <div class="logo">
+            <img src="caminho-para-sua-logo.jpg" alt="Logo">
+        </div>
+
+        <!-- Ícone de menu hamburguer para dispositivos móveis -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <!-- Navegação centralizada -->
+        <nav>
+            <a href="#quem-somos">Quem Somos</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#contato">Contato</a>
+            <a href="#servicos">Serviços</a>
+        </nav>
+
+        <!-- Botão de WhatsApp e número à direita -->
+        <div class="whatsapp-btn">
+            <a href="https://wa.me/seu-numero-whatsapp" target="_blank">
+                <img src="caminho-para-imagem-whatsapp.jpg" alt="WhatsApp">
+            </a>
+            <span>+55 (XX) XXXXX-XXXX</span>
+        </div>
+    </header>
+
+    <div class="banner">
+        <!-- Bloco CTA com headline e botão -->
+        <div class="cta">
+            <div class="headline">Conheça nosso serviço</div>
+            <a href="#" class="botao-cta">Saiba Mais</a>
+        </div>
+    </div>
+
+    <div class="main-container">
+    <section class="quem-somos-container">
+        <!-- Imagem à esquerda -->
+        <div class="image-container">
+          <img src="sua-imagem.jpg" alt="Imagem representando nossa empresa">
+        </div>
+    
+        <!-- Seção de conteúdo à direita -->
+        <div class="content-container">
+          <h2>Quem Somos</h2>
+          <p class="description">Nossa empresa é focada na inovação e excelência, oferecendo serviços de alta qualidade para atender as necessidades dos nossos clientes com confiança e transparência.</p>
+          <div class="highlights">
+            <div class="highlight-item">
+              <h3>Inovação</h3>
+              <p>Implementamos soluções modernas para maximizar os resultados e trazer benefícios reais para nossos clientes.</p>
+            </div>
+            <div class="highlight-item">
+              <h3>Compromisso</h3>
+              <p>Nossa equipe trabalha continuamente para garantir a melhor experiência, com foco em qualidade e confiabilidade.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+
+
+
+
+
+    <section class="como-funciona">
+  <h2>Como Funciona</h2>
+  <div class="conteudo">
+    <img src="imagens/8b2e76fa5694-Cartao_01.jpg" alt="Como Funciona">
+    <div class="steps">
+      <div class="step">
+        <img src="imagens/Frame-10-2.svg" alt="Passo 1">
+        <div>
+          <h3>Especialistas Reconhecidos</h3>
+          <p>Nossos fundadores são profissionais de renome nacional, garantindo que você tenha acesso às terapias integrativas mais confiáveis e baseadas em evidências.</p>
+        </div>
+      </div>
+      <div class="step">
+        <img src="imagens/Frame-11-3.svg" alt="Passo 2">
+        <div>
+          <h3>Cuidado Baseado na Ciência</h3>
+          <p>Nós acreditamos na integração da ciência com a terapia, oferecendo tratamentos que são comprovados e eficazes para melhorar a sua saúde e bem-estar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <img src="imagens/Frame-12-1.svg" alt="Passo 3">
+        <div>
+          <h3>Conexões Valiosas</h3>
+          <p>Ligamos você a terapeutas que compartilham sua visão de bem-estar e a famílias que buscam cuidados naturais. É uma rede de apoio que valoriza sua saúde e felicidade.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="valores-diferenciais">
+    <div class="valores-intro">
+        <h2>Nossos Valores e Diferenciais</h2>
+        <p>Nosso compromisso com a excelência, ética e inovação guia cada ação que tomamos. Acreditamos em criar um ambiente onde nossos clientes e colaboradores se sintam inspirados e valorizados. Descubra o que nos diferencia e como cada um desses valores está incorporado em tudo o que fazemos.</p>
+    </div>
+
+    <div class="valores-lista">
+        <div class="valor-item">
+            <img src="caminho-para-imagem.jpg" alt="Imagem representando Inovação">
+            <h3>Inovação</h3>
+            <p>Estamos sempre à frente, explorando novas tecnologias e métodos para proporcionar soluções inovadoras e diferenciadas. Nossa equipe se dedica a encontrar as melhores práticas e tendências para criar valor em cada projeto.</p>
+        </div>
+        <div class="valor-item">
+            <img src="caminho-para-imagem.jpg" alt="Imagem representando Compromisso com o Cliente">
+            <h3>Compromisso com o Cliente</h3>
+            <p>Os clientes são o centro de nossa missão. Garantimos suporte contínuo e um atendimento excepcional para que suas necessidades sejam atendidas com qualidade e agilidade, buscando sempre superar as expectativas.</p>
+        </div>
+        <div class="valor-item">
+            <img src="caminho-para-imagem.jpg" alt="Imagem representando Sustentabilidade">
+            <h3>Sustentabilidade</h3>
+            <p>Trabalhamos com responsabilidade ambiental e social, aplicando práticas sustentáveis em nossos processos. Nosso objetivo é criar um impacto positivo no mundo ao nosso redor e promover uma cultura de preservação.</p>
+        </div>
+        <div class="valor-item">
+            <img src="caminho-para-imagem.jpg" alt="Imagem representando Transparência e Ética">
+            <h3>Transparência e Ética</h3>
+            <p>Atuamos com integridade em cada decisão, cultivando relações de confiança. Prezamos pela transparência em todas as interações, garantindo que todos os envolvidos estejam informados e alinhados com nossos princípios.</p>
+        </div>
+        <div class="valor-item">
+            <img src="caminho-para-imagem.jpg" alt="Imagem representando Trabalho em Equipe">
+            <h3>Trabalho em Equipe</h3>
+            <p>Nossa equipe é nosso maior ativo. Valorizamos a colaboração e o respeito mútuo, acreditando que o sucesso é alcançado quando todos trabalham juntos em prol de um objetivo comum.</p>
+        </div>
+    </div>
+
+    <div class="diferenciais">
+        <h2>O Que Nos Diferencia</h2>
+        <p>Nossos diferenciais estão nas soluções personalizadas e no atendimento humanizado. Aqui estão algumas razões pelas quais nossos clientes confiam e escolhem nossos serviços:</p>
+        <ul>
+            <li><strong>Equipe Especializada:</strong> Profissionais capacitados e em constante atualização.</li>
+            <li><strong>Soluções Personalizadas:</strong> Cada projeto é tratado de forma única, adaptado às necessidades do cliente.</li>
+            <li><strong>Resultados Comprovados:</strong> Nosso portfólio é composto por cases de sucesso e resultados comprovados.</li>
+            <li><strong>Compromisso com Prazos:</strong> Cumprimos nossos prazos e garantimos a entrega de alta qualidade.</li>
+            <li><strong>Atendimento Humanizado:</strong> Cada cliente é tratado com respeito e atenção personalizada.</li>
+        </ul>
+    </div>
+</section>
+
+
+
+
+<section class="cta-banner">
+    <div class="cta-content">
+        <h2>Transforme Suas Ideias em Resultados Concretos!</h2>
+        <p>Explore nossas soluções exclusivas e descubra como podemos levar seu negócio para o próximo nível.</p>
+        <a href="#servicos" class="cta-button">Saiba Mais</a>
+    </div>
+</section>
+
+
+
+<section class="catalogo">
+    <h2>Nosso Catálogo Exclusivo</h2>
+    <p>Descubra nossa seleção de produtos cuidadosamente escolhidos para atender ao seu estilo e conforto.</p>
+
+    <div class="catalogo-grid">
+        <div class="catalogo-item">
+            <img src="caminho-para-imagem1.jpg" alt="Produto 1">
+            <h3>Produto em Destaque</h3>
+            <p>Conheça as tendências que destacam estilo e praticidade.</p>
+            <a href="#catalogo" class="catalogo-button">Ver Catálogo</a>
+        </div>
+        <div class="catalogo-item">
+            <img src="caminho-para-imagem2.jpg" alt="Produto 2">
+            <h3>Mais Vendidos</h3>
+            <p>Os favoritos do momento, escolha o seu!</p>
+            <a href="#catalogo" class="catalogo-button">Ver Catálogo</a>
+        </div>
+        <div class="catalogo-item">
+            <img src="caminho-para-imagem3.jpg" alt="Produto 3">
+            <h3>Nossas Novidades</h3>
+            <p>Fique por dentro dos lançamentos que estão chegando.</p>
+            <a href="#catalogo" class="catalogo-button">Ver Catálogo</a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+    <!-- Footer fora da section para posicionamento correto -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Logo -->
+            <div class="footer-logo">
+                <img src="imagens/Logotipo-1-1536x437.png" alt="Logo da Empresa" />
+            </div>
+
+            <!-- Seção com 3 colunas: Sobre, Links Rápidos, Contato -->
+            <div class="footer-sections">
+                <!-- Sobre Nós -->
+                <div class="footer-col">
+                    <h3>Sobre Nós</h3>
+                    <p>Nossa missão é oferecer as melhores terapias naturais com descontos exclusivos para nossos clientes. Acesse e conheça mais sobre nosso trabalho.</p>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="http://localhost/TT/profissionais">Profissionais</a></li>
+                        <li><a href="http://localhost/TT/cadastrocliente">Cadastro de Clientes</a></li>
+                        <li><a href="http://localhost/TT/consulta">Agendar Consulta</a></li>
+                        <li><a href="http://localhost/TT/Blog">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>Email: <a href="mailto:contato@terapias.com.br">contato@terapias.com.br</a></li>
+                        <li>Telefone: (99) 99999-9999</li>
+                        <li>Endereço: Rua das Terapias, 123, Cidade, Estado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Redes Sociais -->
+            <div class="footer-bottom">
+                <p>Siga-nos nas redes sociais:</p>
+                <div class="social-icons">
+                    <a href="#"><img src="imagens/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="imagens/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="imagens/whatsapp.png" alt="WhatsApp"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
